@@ -1,0 +1,105 @@
+{
+  "kind": "collectionType",
+  "collectionName": "users-permissions_user",
+  "info": {
+    "name": "user",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "role": {
+      "model": "role",
+      "via": "users",
+      "plugin": "users-permissions",
+      "configurable": false
+    },
+    "shipment": {
+      "via": "users_permissions_user",
+      "model": "shipment"
+    },
+    "Group": {
+      "type": "component",
+      "repeatable": true,
+      "component": "customer-group.sites"
+    },
+    "Name_Prefix": {
+      "type": "string"
+    },
+    "Name_Suffix": {
+      "type": "string"
+    },
+    "First_Name": {
+      "type": "string"
+    },
+    "Middle_Name": {
+      "type": "string"
+    },
+    "Last_Name": {
+      "type": "string"
+    },
+    "Date_of_Birth": {
+      "type": "date"
+    },
+    "Gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female",
+        "Prefer_Not_To_Say"
+      ]
+    },
+    "Online": {
+      "type": "boolean"
+    },
+    "transactions": {
+      "via": "users_permissions_users",
+      "collection": "transactions"
+    }
+  }
+}
